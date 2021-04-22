@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: formulario-angular
+  name: proyecto-angular
 spec:
   selector:
-    app: formulario-angular
-    tier: formulario-angular
+    app: proyecto-angular
+    tier: proyecto-angular
   ports:
   - protocol: TCP
     port: 80
@@ -15,23 +15,27 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: formulario-angular
+  name: proyecto-angular
 spec:
   selector:
     matchLabels:
-      app: formulario-angular
-      tier: formulario-angular
+      app: proyecto-angular
+      tier: proyecto-angular
       track: stable
   replicas: 1
   template:
     metadata:
       labels:
-        app: formulario-angular
-        tier: formulario-angular
+        app: proyecto-angular
+        tier: proyecto-angular
         track: stable
     spec:
       containers:
-      - name: proyecto-angular
+        - name: proyecto-angular
           image: gcr.io/serene-circlet-311420/proyecto-angular
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/usr/sbin/nginx","-s","quit"]
       nodeSelector:
         cloud.google.com/gke-nodepool: pool-1
