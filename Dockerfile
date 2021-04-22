@@ -1,7 +1,7 @@
 # ---- Base Node ----
 FROM tomcat:8.0-alpine
 
-COPY  ./dist/demo /usr/local/tomcat/webapps/hello
+COPY  ./dist/demo /usr/local/tomcat/webapps/formulario
 
 RUN rm /usr/local/tomcat/conf/tomcat-users.xml
 COPY ./tomcat-users.xml /usr/local/tomcat/conf
