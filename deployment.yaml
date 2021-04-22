@@ -31,7 +31,7 @@ spec:
         track: stable
     spec:
       containers:
-        - name: proyecto-angular
+        - name: proyecto-angular-nginx
           image: gcr.io/serene-circlet-311420/proyecto-angular-nginx
       nodeSelector:
         cloud.google.com/gke-nodepool: pool-1
