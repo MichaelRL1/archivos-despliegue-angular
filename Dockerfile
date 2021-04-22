@@ -9,5 +9,5 @@ RUN rm -v /usr/share/nginx/html/index.html
 COPY ./dist/demo  /usr/share/nginx/html
 
 # expose port and define CMD
-EXPOSE 3000
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
