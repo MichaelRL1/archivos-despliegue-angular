@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: "gcr.io/serene-circlet-311420/proyecto-angular:5"
+          image: gcr.io/serene-circlet-311420/proyecto-angular
           lifecycle:
             preStop:
               exec:
