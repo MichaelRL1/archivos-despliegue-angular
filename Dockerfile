@@ -1,13 +1,9 @@
-# Base Image
-FROM nginx:alpine
+# ---- Base Node ----
+FROM tomcat:8.0-alpine
 
 # Set working directory
-WORKDIR /formulario-web
 
-# Copy project files
-RUN rm -v /usr/share/nginx/html/index.html
-COPY ./dist/demo  /usr/share/nginx/html
+ADD  /formulario-web/dist/demo /usr/local/tomcat/webapps/
 
-# expose port and define CMD
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
