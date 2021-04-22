@@ -33,9 +33,5 @@ spec:
       containers:
         - name: proyecto-angular
           image: gcr.io/serene-circlet-311420/proyecto-angular
-          lifecycle:
-            preStop:
-              exec:
-                command: ["/usr/sbin/nginx","-s","quit"]
       nodeSelector:
         cloud.google.com/gke-nodepool: pool-1
