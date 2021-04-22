@@ -6,4 +6,4 @@ RUN cd /usr/local/tomcat/conf
 RUN sed "44i\<user username="tomcat" password="tomcat" roles="role1"/> \n " tomcat-users.xml
 
 EXPOSE 8080
-CMD ["catalina.sh", "start"]
+CMD ["catalina.sh", "run"]
