@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: proyecto-angular-tomcat
+spec:
+  selector:
+    app: proyecto-angular-tomcat
+    tier: proyecto-angular-tomcat
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proyecto-angular-tomcat
+spec:
+  selector:
+    matchLabels:
+      app: proyecto-angular-tomcat
+      tier: proyecto-angular-tomcat
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: proyecto-angular-tomcat
+        tier: proyecto-angular-tomcat
+        track: stable
+    spec:
+      containers:
+        - name: proyecto-angular-tomcat
+          image: gcr.io/serene-circlet-311420/proyecto-angular-tomcat
+      nodeSelector:
+        cloud.google.com/gke-nodepool: pool-1
